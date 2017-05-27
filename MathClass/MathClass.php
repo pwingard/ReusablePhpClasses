@@ -30,7 +30,8 @@ class MathClass{
      * @return $this,$this->args|array mixed __construct()
      */
     public function __construct() {
-        $this->args = func_get_args();
+        $this->params = func_get_args();
+        $this->args=$this->params[0];
     }
 
 
@@ -101,6 +102,17 @@ class MathClass{
         //money_format('%.2n', $number);
         setlocale(LC_MONETARY, 'en_US.UTF-8');
         return $this->result = money_format("%.".$dec."n", $this->result);
+        return $this;
+    }
+
+    /**
+     * @method after operator, groups by commas (after operator)
+     * @param int $dec decimal places
+     * @param numeric $this->result
+     * @return $this, $this->result|string grp()
+     */
+    public function grp($dec){
+        $this->result = number_format($this->result, 2, '.', ',');
         return $this;
     }
 

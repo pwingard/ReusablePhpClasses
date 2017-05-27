@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -6,27 +7,49 @@ error_reporting(E_ALL);
 require_once "MathClass.php";
 
 $mymy = new TestMathClass;
-echo $mymy->testMathClass()->result.PHP_EOL;
+
+echo $mymy->testMathClassTernary()->result.PHP_EOL;
 
 
 class TestMathClass{
 
-    public $var1 = 18000;
-    public $var2 = 6050;
+    public $var1 = 1;
+    public $var2 = 2;
+    public $var3 = 3;
 
-    public function testMathClass(){
+    public function testMathClassTernary(){
 
-        $Math = new MathClass($this->var1,$this->var2);
-        $is_no_error = ($Math->isDivisable()) ? (                   //pre-operator
-                                                ($Math->result) ?   //math operator
-                                                    $Math->div()->rnd(2) //post-operator
-                                                    : false
-                                            ) : false;
+        $Math = new MathClass($this);
+        $is_no_error =
+                    ($Math->isNumeric()) ? (                //pre-operator
+                        ($Math->result) ?                       //math operator
+                            $Math->add()->grp(2)    //post-operator
+                            : false
+                    ) : false;
         if(!$is_no_error) {
             $Math->result = "Input error.";
         }
         return $Math;
     }
+
+//    public function testMathClass(){
+//
+//        $Math = new MathClass($this->var1,$this->var2,$this->var3);
+//
+//        if($Math->isNumeric()){
+//            $Math->mul()->grp(2)
+//        }
+//
+//
+//            ($Math->result) ?                       //math operator
+//                   //post-operator
+//                : false
+//            ) : false;
+//        if(!$is_no_error) {
+//            $Math->result = "Input error.";
+//        }
+//        return $Math;
+//    }
 }
 
 
