@@ -1,5 +1,5 @@
 <?php
-
+namespace reusableclasses\mathclass;
 
 /**
  * Class MathClass
