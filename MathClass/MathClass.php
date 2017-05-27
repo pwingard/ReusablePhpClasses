@@ -15,10 +15,11 @@ class MathClass{
      * @return $this,$this->args|array mixed __construct()
      */
     public function __construct() {
-        $this->params = func_get_args();
-        $this->args=$this->params[0];
+        if (func_get_args()) {
+            $this->params = func_get_args();
+            $this->args = $this->params[0];
+        }
     }
-
 
     /**************** operators ********************************/
 
@@ -103,7 +104,18 @@ class MathClass{
 
 
     /**************** pre-operators ********************************/
-
+    /**
+     * @method sets $this->args to params passed in
+     * @param array $vars
+     * @return $this->args array mixed
+     */
+    public function setInput(array $vars){
+        if(isset($this->args)) unset($this->args);
+        foreach ($vars as $i => $var) {
+            $this->args[] = $var;
+        }
+        return $this;
+    }
 
     /**
      * @method before non-div operators, checks for numeric parameters
@@ -113,7 +125,7 @@ class MathClass{
      * @return  bool|$this, $this->result isNumeric()
      */
     public function isNumeric() {
-        foreach ($this->args as $arg) {
+        foreach ($this as $arg) {
             if(!is_numeric($arg)) {
                 $this->result = false;
                 return $this;

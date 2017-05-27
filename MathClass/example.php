@@ -8,26 +8,21 @@ require_once "MathClass.php";
 
 $mymy = new TestMathClass;
 
-echo $mymy->testMathClassTernary()->result.PHP_EOL;
+//use MathClass inside a class
 echo $mymy->testMathClass()->result.PHP_EOL;
+
+// or outside a class
+$Math = new MathClass();
+$Math->setInput([12.445678, 15,17])->isNumeric()->mul()->grp(2);
+echo $Math->result.PHP_EOL;
 
 
 class TestMathClass{
 
+    //params can be passed from inside another class
     public $var1 = 8;
     public $var2 = 2;
     public $var3 = 3;
-
-    /**
-     * ternary example test for math class
-     * @param numeric $var1, $var2, $var3
-     * @return MathClass testMathClassTernary()
-     */
-    public function testMathClassTernary(){
-        $Math = new MathClass($this);
-        ($Math->isNumeric()) ? (($Math->result) ? $Math->add()->grp(2) : $Math->result = "Input error." ) : $Math->result = "Input error.";
-        return $Math;
-    }
 
     /**
      * if/then example test for math class
