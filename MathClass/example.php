@@ -11,12 +11,12 @@ echo $mymy->testMathClass()->result.PHP_EOL;
 
 class TestMathClass{
 
-    public $patent = 18000;
-    public $legal_accounting = 6000.77;
+    public $var1 = 18000;
+    public $var2 = 6050;
 
     public function testMathClass(){
 
-        $Math = new MathClass(2312,26);
+        $Math = new MathClass($this->var1,$this->var2);
         $is_no_error = ($Math->isDivisable()) ? (                   //pre-operator
                                                 ($Math->result) ?   //math operator
                                                     $Math->div()->rnd(2) //post-operator
