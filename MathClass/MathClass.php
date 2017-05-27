@@ -1,25 +1,10 @@
 <?php
-namespace reusableclasses\mathclass;
+namespace php\ReusableClasses\MathClass;
 
 /**
  * Class MathClass
  * MathClass is a Reusable Fluent Interface for performing input validation, math operations, and post operation formatting
  * @author Pete Wingard
-
-    example usage using nested ternary statement
-
-         public function testMathClass(){
-            $Math = new MathClass(2312,26);
-            $is_no_error = ($Math->isDivisable()) ? (                           //pre-operator
-                                                        ($Math->result) ?       //math operator
-                                                        $Math->div()->rnd(2)    //post-operator
-                                                        : false
-                                                    ) : false;
-            if(!$is_no_error) {
-                $Math->result = "Input error.";
-            }
-        return $Math;
-    }
  */
 
 class MathClass{
